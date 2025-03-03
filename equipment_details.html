@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Equipment Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        #details-container {
+            max-width: 600px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        p {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+
+        .home-button {
+            margin-top: 20px;
+            padding: 10px 15px;
+            font-size: 16px;
+            color: white;
+            background-color: #0077b6;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .home-button:hover {
+            background-color: #005f8a;
+        }
+    </style>
+</head>
+<body>
+    <h1>Equipment Details</h1>
+    <div id="details-container"></div>
+    <a href="fishing.htm" class="home-button">Home</a>
+
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const equipmentDetails = {
+            "EQ001": { name: "Fishing Net", brand: "SeaMax", model: "NX100", purchaseDate: "2022-05-12", location: "Deck A" },
+            "EQ002": { name: "Trawl Winch", brand: "OceanTech", model: "TW350", purchaseDate: "2021-08-15", location: "Engine Room" },
+            "EQ003": { name: "Buoy", brand: "MarineSafe", model: "B200", purchaseDate: "2020-11-09", location: "Storage Bay" },
+            "EQ004": { name: "Rod Holder", brand: "FishMaster", model: "RH500", purchaseDate: "2019-07-20", location: "Deck B" },
+            "EQ005": { name: "GPS Tracker", brand: "NavTech", model: "GPSX", purchaseDate: "2023-01-05", location: "Control Room" },
+            "EQ006": { name: "Bait Box", brand: "MarineGear", model: "BX100", purchaseDate: "2018-06-10", location: "Storage Bay" }
+        };
+
+        const id = params.get('id');
+        const container = document.getElementById('details-container');
+
+        if (id && equipmentDetails[id]) {
+            const details = equipmentDetails[id];
+            container.innerHTML = `
+                <p><strong>Equipment ID:</strong> ${id}</p>
+                <p><strong>Name/Type:</strong> ${details.name}</p>
+                <p><strong>Brand:</strong> ${details.brand}</p>
+                <p><strong>Model:</strong> ${details.model}</p>
+                <p><strong>Purchase Date:</strong> ${details.purchaseDate}</p>
+                <p><strong>Location:</strong> ${details.location}</p>
+            `;
+        } else {
+            container.innerHTML = `<p>No equipment found for the given ID.</p>`;
+        }
+    </script>
+</body>
+</html>
