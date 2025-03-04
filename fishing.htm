@@ -95,21 +95,22 @@
 
     <script>
         function redirectToDetails() {
-            const idFilter = document.getElementById('searchID').value.trim();
-            const startFilter = document.getElementById('startDate').value.trim();
-            const endFilter = document.getElementById('endDate').value.trim();
-            const locationFilter = document.getElementById('searchLocation').value.trim();
-            
-            if (idFilter || startFilter || endFilter || locationFilter) {
-                const params = new URLSearchParams();
-                if (idFilter) params.append('id', idFilter);
-                if (startFilter) params.append('start', startFilter);
-                if (endFilter) params.append('end', endFilter);
-                if (locationFilter) params.append('location', locationFilter);
-                
-                window.location.href = `https://htmlpreview.github.io/?https://raw.githubusercontent.com/chenson00/Submerged/main/equipment_details.html?${params.toString()}`;
-            }
-        }
+        const idFilter = document.getElementById('searchID').value.trim().toUpperCase(); // Convert input to uppercase
+        const startFilter = document.getElementById('startDate').value.trim();
+        const endFilter = document.getElementById('endDate').value.trim();
+        const locationFilter = document.getElementById('searchLocation').value.trim();
+    
+    if (idFilter || startFilter || endFilter || locationFilter) {
+        const params = new URLSearchParams();
+        if (idFilter) params.append('id', idFilter);
+        if (startFilter) params.append('start', startFilter);
+        if (endFilter) params.append('end', endFilter);
+        if (locationFilter) params.append('location', locationFilter);
+        
+        window.location.href = `https://htmlpreview.github.io/?https://raw.githubusercontent.com/chenson00/Submerged/main/equipment_details.html?${params.toString()}`;
+    }
+}
+
     </script>
 </body>
 </html>
