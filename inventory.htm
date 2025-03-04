@@ -88,17 +88,18 @@
         const locationFilter = params.get('location')?.toLowerCase() || '';
 
         const mockData = [
-            { id: "EQ001", name: "Fishing Net", brand: "SeaMax", model: "NX100", purchaseDate: "2022-05-12", location: "Deck A" },
-            { id: "EQ002", name: "Trawl Winch", brand: "OceanTech", model: "TW350", purchaseDate: "2021-08-15", location: "Engine Room" },
-            { id: "EQ003", name: "Buoy", brand: "MarineSafe", model: "B200", purchaseDate: "2020-11-09", location: "Storage Bay" },
-            { id: "EQ004", name: "Rod Holder", brand: "FishMaster", model: "RH500", purchaseDate: "2019-07-20", location: "Deck B" },
-            { id: "EQ005", name: "GPS Tracker", brand: "NavTech", model: "GPSX", purchaseDate: "2023-01-05", location: "Control Room" },
-            { id: "EQ006", name: "Bait Box", brand: "MarineGear", model: "BX100", purchaseDate: "2018-06-10", location: "Storage Bay" },
-            { id: "EQ007", name: "Anchor", brand: "DeepSea", model: "A500", purchaseDate: "2020-04-18", location: "Hull" },
-            { id: "EQ008", name: "Sonar Device", brand: "TechFish", model: "S300", purchaseDate: "2022-09-30", location: "Control Room" },
-            { id: "EQ009", name: "Fishing Line", brand: "SeaLine", model: "FL200", purchaseDate: "2021-02-25", location: "Deck A" },
-            { id: "EQ010", name: "Life Jacket", brand: "SafeMarine", model: "LJ100", purchaseDate: "2019-11-11", location: "Safety Storage" }
-        ];
+    { id: "EQ001", name: "Fishing Net", brand: "SeaMax", model: "NX100", purchaseDate: "2022-05-12", location: "Galway Bay", coordinates: "53.1500°N, 10.3000°W" },
+    { id: "EQ002", name: "Trawl Winch", brand: "OceanTech", model: "TW350", purchaseDate: "2021-08-15", location: "Aran Islands", coordinates: "52.9500°N, 11.0000°W" },
+    { id: "EQ003", name: "Buoy", brand: "MarineSafe", model: "B200", purchaseDate: "2020-11-09", location: "Tory Island", coordinates: "54.5000°N, 10.7000°W" },
+    { id: "EQ004", name: "Rod Holder", brand: "FishMaster", model: "RH500", purchaseDate: "2019-07-20", location: "Blasket Islands", coordinates: "51.7000°N, 10.4000°W" },
+    { id: "EQ005", name: "GPS Tracker", brand: "NavTech", model: "GPSX", purchaseDate: "2023-01-05", location: "Porcupine Bank", coordinates: "52.2000°N, 10.8000°W" },
+    { id: "EQ006", name: "Bait Box", brand: "MarineGear", model: "BX100", purchaseDate: "2018-06-10", location: "Castletownbere", coordinates: "51.5000°N, 9.8000°W" },
+    { id: "EQ007", name: "Anchor", brand: "DeepSea", model: "A500", purchaseDate: "2020-04-18", location: "Fastnet Rock", coordinates: "51.3000°N, 8.9000°W" },
+    { id: "EQ008", name: "Sonar Device", brand: "TechFish", model: "S300", purchaseDate: "2022-09-30", location: "Dublin Coast", coordinates: "53.5000°N, 5.7000°W" },
+    { id: "EQ009", name: "Fishing Line", brand: "SeaLine", model: "FL200", purchaseDate: "2021-02-25", location: "Mourne Coast", coordinates: "54.2000°N, 6.0000°W" },
+    { id: "EQ010", name: "Life Jacket", brand: "SafeMarine", model: "LJ100", purchaseDate: "2019-11-11", location: "Malin Head", coordinates: "55.3000°N, 7.5000°W" }
+];
+
 
         const filteredData = mockData.filter(item => {
             return (!idFilter || item.id === idFilter) &&
