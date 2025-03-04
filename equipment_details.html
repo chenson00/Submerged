@@ -55,32 +55,31 @@
 
     <script>
         const params = new URLSearchParams(window.location.search);
-const equipmentDetails = {
-    "EQ001": { name: "Fishing Net", brand: "SeaMax", model: "NX100", purchaseDate: "2022-05-12", location: "Deck A" },
-    "EQ002": { name: "Trawl Winch", brand: "OceanTech", model: "TW350", purchaseDate: "2021-08-15", location: "Engine Room" },
-    "EQ003": { name: "Buoy", brand: "MarineSafe", model: "B200", purchaseDate: "2020-11-09", location: "Storage Bay" },
-    "EQ004": { name: "Rod Holder", brand: "FishMaster", model: "RH500", purchaseDate: "2019-07-20", location: "Deck B" },
-    "EQ005": { name: "GPS Tracker", brand: "NavTech", model: "GPSX", purchaseDate: "2023-01-05", location: "Control Room" },
-    "EQ006": { name: "Bait Box", brand: "MarineGear", model: "BX100", purchaseDate: "2018-06-10", location: "Storage Bay" }
-};
+        const equipmentDetails = {
+            "EQ001": { name: "Fishing Net", brand: "SeaMax", model: "NX100", purchaseDate: "2022-05-12", location: "Deck A" },
+            "EQ002": { name: "Trawl Winch", brand: "OceanTech", model: "TW350", purchaseDate: "2021-08-15", location: "Engine Room" },
+            "EQ003": { name: "Buoy", brand: "MarineSafe", model: "B200", purchaseDate: "2020-11-09", location: "Storage Bay" },
+            "EQ004": { name: "Rod Holder", brand: "FishMaster", model: "RH500", purchaseDate: "2019-07-20", location: "Deck B" },
+            "EQ005": { name: "GPS Tracker", brand: "NavTech", model: "GPSX", purchaseDate: "2023-01-05", location: "Control Room" },
+            "EQ006": { name: "Bait Box", brand: "MarineGear", model: "BX100", purchaseDate: "2018-06-10", location: "Storage Bay" }
+        };
 
-const id = params.get('id')?.toUpperCase(); // Ensure case matches stored data
-const container = document.getElementById('details-container');
+        const id = params.get('id')?.toUpperCase(); // Ensure case matches stored data
+        const container = document.getElementById('details-container');
 
-if (id && equipmentDetails[id]) {
-    const details = equipmentDetails[id];
-    container.innerHTML = `
-        <p><strong>Equipment ID:</strong> ${id}</p>
-        <p><strong>Name/Type:</strong> ${details.name}</p>
-        <p><strong>Brand:</strong> ${details.brand}</p>
-        <p><strong>Model:</strong> ${details.model}</p>
-        <p><strong>Purchase Date:</strong> ${details.purchaseDate}</p>
-        <p><strong>Location:</strong> ${details.location}</p>
-    `;
-} else {
-    container.innerHTML = `<p>No equipment found for the given ID.</p>`;
-}
-
+        if (id && equipmentDetails[id]) {
+            const details = equipmentDetails[id];
+            container.innerHTML = `
+                <p><strong>Equipment ID:</strong> ${id}</p>
+                <p><strong>Name/Type:</strong> ${details.name}</p>
+                <p><strong>Brand:</strong> ${details.brand}</p>
+                <p><strong>Model:</strong> ${details.model}</p>
+                <p><strong>Purchase Date:</strong> ${details.purchaseDate}</p>
+                <p><strong>Location:</strong> ${details.location}</p>
+            `;
+        } else {
+            container.innerHTML = `<p>No equipment found for the given ID.</p>`;
+        }
     </script>
 </body>
 </html>
