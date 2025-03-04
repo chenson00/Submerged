@@ -67,7 +67,7 @@
         const id = params.get('id')?.toUpperCase(); // Ensure case matches stored data
         const container = document.getElementById('details-container');
 
-        if (id && equipmentDetails[id]) {
+        //if (id && equipmentDetails[id]) {
             const details = equipmentDetails[id];
             container.innerHTML = `
                 <p><strong>Equipment ID:</strong> ${id}</p>
@@ -77,9 +77,9 @@
                 <p><strong>Purchase Date:</strong> ${details.purchaseDate}</p>
                 <p><strong>Location:</strong> ${details.location}</p>
             `;
-        } else {
-            container.innerHTML = `<p>No equipment found for the given ID.</p>`;
-        }
+        //} else {
+        //    container.innerHTML = `<p>No equipment found for the given ID.</p>`;
+        //}
     </script>
 </body>
 </html>
