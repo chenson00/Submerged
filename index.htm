@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventory</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        #results-container {
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            display: none;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #0077b6;
+            color: white;
+        }
+
+        .home-button {
+            margin-top: 20px;
+            padding: 10px 15px;
+            font-size: 16px;
+            color: white;
+            background-color: #0077b6;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .home-button:hover {
+            background-color: #005f8a;
+        }
+    </style>
+</head>
+<body>
+    <h1>Equipment Inventory</h1>
+    <div id="results-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Equipment ID</th>
+                    <th>Name/Type</th>
+                    <th>Brand</th>
+                    <th>Model</th>
+                    <th>Purchase Date</th>
+                    <th>Location</th>
+                </tr>
+            </thead>
+            <tbody id="results-body"></tbody>
+        </table>
+    </div>
+    <a href="index.htm" class="home-button">Home</a>
+
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const idFilter = params.get('id')?.toUpperCase() || '';
+        const startFilter = params.get('start') || '';
+        const endFilter = params.get('end') || '';
+        const locationFilter = params.get('location')?.toLowerCase() || '';
+
+        const mockData = [
+            { id: "EQ001", name: "Fishing Net", brand: "SeaMax", model: "NX100", purchaseDate: "2022-05-12", location: "Deck A" },
+            { id: "EQ002", name: "Trawl Winch", brand: "OceanTech", model: "TW350", purchaseDate: "2021-08-15", location: "Engine Room" },
+            { id: "EQ003", name: "Buoy", brand: "MarineSafe", model: "B200", purchaseDate: "2020-11-09", location: "Storage Bay" },
+            { id: "EQ004", name: "Rod Holder", brand: "FishMaster", model: "RH500", purchaseDate: "2019-07-20", location: "Deck B" },
+            { id: "EQ005", name: "GPS Tracker", brand: "NavTech", model: "GPSX", purchaseDate: "2023-01-05", location: "Control Room" },
+            { id: "EQ006", name: "Bait Box", brand: "MarineGear", model: "BX100", purchaseDate: "2018-06-10", location: "Storage Bay" },
+            { id: "EQ007", name: "Anchor", brand: "DeepSea", model: "A500", purchaseDate: "2020-04-18", location: "Hull" },
+            { id: "EQ008", name: "Sonar Device", brand: "TechFish", model: "S300", purchaseDate: "2022-09-30", location: "Control Room" },
+            { id: "EQ009", name: "Fishing Line", brand: "SeaLine", model: "FL200", purchaseDate: "2021-02-25", location: "Deck A" },
+            { id: "EQ010", name: "Life Jacket", brand: "SafeMarine", model: "LJ100", purchaseDate: "2019-11-11", location: "Safety Storage" }
+        ];
+
+        const filteredData = mockData.filter(item => {
+            return (!idFilter || item.id === idFilter) &&
+                   (!startFilter || item.purchaseDate >= startFilter) &&
+                   (!endFilter || item.purchaseDate <= endFilter) &&
+                   (!locationFilter || item.location.toLowerCase().includes(locationFilter));
+        });
+
+        if (filteredData.length > 0) {
+            const tableBody = document.getElementById("results-body");
+            filteredData.forEach(item => {
+                const row = `<tr>
+                    <td>${item.id}</td>
+                    <td>${item.name}</td>
+                    <td>${item.brand}</td>
+                    <td>${item.model}</td>
+                    <td>${item.purchaseDate}</td>
+                    <td>${item.location}</td>
+                </tr>`;
+                tableBody.innerHTML += row;
+            });
+            document.getElementById("results-container").style.display = "block";
+        } else {
+            document.body.innerHTML += "<p>No matching equipment found.</p>";
+        }
+    </script>
+</body>
+</html>
